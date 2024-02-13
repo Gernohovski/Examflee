@@ -1,11 +1,40 @@
 package br.com.rodrigoger.EntidadesDominio;
 
-public class Usuarios extends Pessoas {
-    private Senha senha;
-    private Faculdades faculdade;
-    private Cursos curso;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
-    public Usuarios(Integer id, String nome, String cpf) {
-        super(id, nome, cpf);
-    }
+import javax.persistence.*;
+
+@Data
+@NoArgsConstructor
+@RequiredArgsConstructor
+
+@Entity
+@Table(name = "Usuarios")
+public class Usuarios {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "usr_id")
+    private Integer id;
+
+    @Column(name = "usr_nome")
+    private String nome;
+
+    @Column(name = "usr_cpf")
+    private String cpf;
+
+    @OneToOne
+    @JoinColumn(name = "sen_id")
+    private Senha senha;
+
+    @OneToOne
+    @JoinColumn(name = "fcl_id")
+    private Faculdades faculdade;
+
+    @OneToOne
+    @JoinColumn(name = "crs_id")
+    private Cursos curso;
 }
