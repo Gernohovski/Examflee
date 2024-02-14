@@ -1,19 +1,12 @@
 package br.com.rodrigoger.EntidadesDominio;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
-
+import lombok.*;
 import javax.persistence.*;
 
 @Data
-@NoArgsConstructor
-@RequiredArgsConstructor
-
 @Entity
 @Table(name="Professores")
-public class Professores {
+public class Professores implements EntidadeDominio{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
